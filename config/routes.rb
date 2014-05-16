@@ -1,9 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'comments/create'
+
+  get 'comments/destroy'
+
   root 'restos#index'
 
   resources :restos
-
+  resources :comments, only: [:create, :destroy]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

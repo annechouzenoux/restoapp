@@ -5,3 +5,23 @@
 <%= image_tag(@resto.picture, {size: '200x300'}) %>
 
 <%= link_to "back", root_path %>
+
+
+<p>Commentaires
+  <ul>
+    <% @resto.comments.each do |comment| %>
+    <li><%= comment.body %></li>
+    <%= link_to 'supprimer', comment_path(comment), method: delete %>
+    <% end %>
+  </ul>
+
+</p>
+
+<h2>Ajoutez un commentaire !</h2>
+<%= form_for(@resto.comments.build) do |f| %>
+<%= f.hidden_field :resto_id %>
+<%= f.label :body %>
+<%= f.text_area :body %>
+<%= f.submit %>
+
+<p>
